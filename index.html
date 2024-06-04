@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdsGram Ad Example</title>
-    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+    <script src="https://sad.adsgram.ai/js/sad.min.js" async></script>
 </head>
 <body>
     <button id="showAdBtn">Show Ad</button>
     <script>
-        // Initialize AdsGram SDK
-        const blockId = "106";
-        const AdController = window.Adsgram.init({ blockId: blockId, debug: true });
-
-        // Show ad when button is clicked
         document.getElementById('showAdBtn').addEventListener('click', function() {
-            AdController.show().then((result) => {
-                if(result.done) {
-                    console.log('User watched the ad till the end.');
-                } else {
-                    console.log('User skipped the ad or an error occurred.');
-                }
-            }).catch((result) => {
-                console.error('Error showing ad:', result.description);
-            });
+            if (window.Adsgram) {
+                const blockId = "106";
+                const AdController = window.Adsgram.init({ blockId: blockId, debug: true });
+
+                AdController.show().then((result) => {
+                    if (result.done) {
+                        console.log('User watched the ad till the end.');
+                    } else {
+                        console.log('User skipped the ad or an error occurred.');
+                    }
+                }).catch((error) => {
+                    console.error('Error showing ad:', error.description);
+                });
+            } else {
+                console.error('Adsgram SDK is not loaded.');
+            }
         });
     </script>
 </body>
 </html>
+
