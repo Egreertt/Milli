@@ -3,37 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad Display on Button Click</title>
-    <meta name="google-adsense-account" content="ca-pub-8441249205046861">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8441249205046861" crossorigin="anonymous"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8441249205046861"
-     crossorigin="anonymous"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        #ad-container {
-            margin-top: 20px;
-        }
-    </style>
+    <title>AdsGram Ad Example</title>
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 </head>
 <body>
-    <h1>Click the button to see an ad</h1>
-    <button id="show-ad-button">Show Ad</button>
-    <div id="ad-container" style="display: none;">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-8441249205046861"
-             data-ad-slot="3386917253"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-    </div>
+    <button id="showAdBtn">Show Ad</button>
     <script>
-        document.getElementById('show-ad-button').addEventListener('click', function() {
-            document.getElementById('ad-container').style.display = 'block';
-            (adsbygoogle = window.adsbygoogle || []).push({});
+        // Initialize AdsGram SDK
+        const blockId = "105";
+        const AdController = window.Adsgram.init({ blockId: blockId, debug: true });
+
+        // Show ad when button is clicked
+        document.getElementById('showAdBtn').addEventListener('click', function() {
+            AdController.show().then((result) => {
+                if(result.done) {
+                    console.log('User watched the ad till the end.');
+                } else {
+                    console.log('User skipped the ad or an error occurred.');
+                }
+            }).catch((result) => {
+                console.error('Error showing ad:', result.description);
+            });
         });
     </script>
 </body>
