@@ -6,6 +6,7 @@
     <title>AdsGram Ad Example</title>
     <script>
         // Load the AdsGram SDK
+        const showPromise: Promise<ShowPromiseResult> = AdController.show();
         function loadAdsgramSdk(callback) {
             const script = document.createElement('script');
             script.src = 'https://sad.adsgram.ai/js/sad.min.js';
