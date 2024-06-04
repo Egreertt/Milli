@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Display on Button Click</title>
+    <meta name="google-adsense-account" content="ca-pub-8441249205046861">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8441249205046861" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8441249205046861"
+     crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #ad-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click the button to see an ad</h1>
+    <button id="show-ad-button">Show Ad</button>
+    <div id="ad-container" style="display: none;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-8441249205046861"
+             data-ad-slot="3386917253"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+    <script>
+        document.getElementById('show-ad-button').addEventListener('click', function() {
+            document.getElementById('ad-container').style.display = 'block';
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        });
+    </script>
+</body>
+</html>
